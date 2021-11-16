@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+[
+  { code: 'MUG', name: 'Reedsy Mug', price: 6 },
+  { code: 'TSHIRT', name: 'Reedsy T-shirt', price: 15 },
+  { code: 'HOODIE', name: 'Reedsy Hoodie', price: 20 }
+].each do |data|
+  product = Product.find_or_initialize_by(data)
+  puts "Created product #{product.inspect}".green if product.new_record? && product.save
+end
