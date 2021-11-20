@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :product do
     code { Faker::Barcode.unique.ean }
     name { Faker::Name.name }
-    price { rand((10 * 10**3)..(300 * 10**3)) }
+    price { rand(1000..30_000) }
   end
 end

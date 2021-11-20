@@ -6,12 +6,12 @@ class Api::V1::ProductsControllerShowTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show product' do
-    get api_v1_product_url(@product), as: :json
+    get api_v1_product_url(@product.code), as: :json
     assert_response :success
   end
 
   test 'should show product with attributes' do
-    get api_v1_product_url(@product), as: :json
+    get api_v1_product_url(@product.code), as: :json
     body = JSON.parse(response.body)
 
     %w[code name price].each do |attr|
@@ -20,7 +20,7 @@ class Api::V1::ProductsControllerShowTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show product without created and updated at' do
-    get api_v1_product_url(@product), as: :json
+    get api_v1_product_url(@product.code), as: :json
     body = JSON.parse(response.body)
 
     %w[created_at updated_at].each do |attr|
@@ -29,7 +29,7 @@ class Api::V1::ProductsControllerShowTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show product with formatted price' do
-    get api_v1_product_url(@product), as: :json
+    get api_v1_product_url(@product.code), as: :json
     body = JSON.parse(response.body)
     assert_includes(body['price'], '$')
   end
