@@ -31,7 +31,23 @@ class Api::V1::ProductsController < ApplicationController
     begin
       codes_with_count = params[:codes].tally
       price_cents = codes_with_count.sum do |code, count|
-        Product.find_by!(code: code).price_cents * count
+        product = Product.find_by!(code: code)
+        products_count = count
+        product_price_cents = product.price_cents
+
+        # apply discounts
+        if product.discount.present?
+          product.discount.each do |key, options|
+            case key
+            when '2_for_1'
+              products_count -= 1 if count >= 2
+            when 'percentage'
+              product_price_cents *= (1 - options['amount']) if count >= options['buy_at_least']
+            end
+          end
+        end
+
+        product_price_cents * products_count
       end
     rescue ActiveRecord::RecordNotFound
       render json: :product_not_found, status: :not_found
