@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 [
-  { code: 'MUG', name: 'Reedsy Mug', price: 6 },
-  { code: 'TSHIRT', name: 'Reedsy T-shirt', price: 15 },
-  { code: 'HOODIE', name: 'Reedsy Hoodie', price: 20 }
+  { code: 'MUG', name: 'Reedsy Mug', price_cents: 6000 },
+  { code: 'TSHIRT', name: 'Reedsy T-shirt', price_cents: 15_000 },
+  { code: 'HOODIE', name: 'Reedsy Hoodie', price_cents: 20_000 }
 ].each do |data|
   product = Product.find_or_initialize_by(data)
   puts "Created product #{product.inspect}".green if product.new_record? && product.save
