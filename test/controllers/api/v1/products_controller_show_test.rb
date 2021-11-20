@@ -1,13 +1,8 @@
 require 'test_helper'
 
-class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::ProductsControllerShowTest < ActionDispatch::IntegrationTest
   setup do
     @product = create(:product)
-  end
-
-  test 'should get index' do
-    get api_v1_products_url, as: :json
-    assert_response :success
   end
 
   test 'should show product' do
@@ -21,12 +16,6 @@ class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
 
     %w[code name price].each do |attr|
       assert_not_empty(body[attr])
-    end
-
-    assert_includes(body['price'], '$')
-
-    %w[created_at updated_at].each do |attr|
-      assert_nil(body[attr])
     end
   end
 
