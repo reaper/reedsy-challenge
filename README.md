@@ -3,6 +3,9 @@
 Welcome to the Reedsy challenge.
 I hope you will enjoy reading it and will be satisfied of what have been done.
 
+A project has been created to handle the tasks to do for this challenge. It is available at https://github.com/reaper/reedsy-challenge/projects/1.
+Fee free to see the commits to be aware of the resolution steps https://github.com/reaper/reedsy-challenge/commits/main.
+
 ## Preface
 
 Hello world, I'm Pierre and I'm a senior software engineer, currently working as a ruby on rails backend software developer at Octoly. I'm 33 years old, married and having 3 children, two girls and one boy. They are currently taking me so much time as they are still young, but if I'm thinking about my hobbies, I would say that I love tinker, going for walk and playing video games. The days before, I spent some time to improve my domotic solution in my house, and added some notifications, for example when the garage door is closed or opening, when a camera detects a person or a car eso. I love automating things.
