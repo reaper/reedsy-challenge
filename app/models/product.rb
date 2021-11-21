@@ -1,6 +1,10 @@
 class Product < ApplicationRecord
   monetize :price_cents
 
+  validates :code, uniqueness: true, presence: true
+  validates :name, presence: true
+  validates :price_cents, presence: true
+
   def apply_discount(discount_key, _options = {})
     return unless discount_key
 
