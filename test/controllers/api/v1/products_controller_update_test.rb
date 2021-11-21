@@ -18,6 +18,6 @@ class Api::V1::ProductsControllerUpdateTest < ActionDispatch::IntegrationTest
     body = JSON.parse(response.body)
 
     assert_not_equal(body['price'], old_price)
-    assert_equal(body['price'], Money.from_cents(price_cents, 'USD').format)
+    assert_equal(body['price'], Money.from_cents(price_cents, 'EUR').format)
   end
 end

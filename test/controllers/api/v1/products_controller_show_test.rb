@@ -31,6 +31,6 @@ class Api::V1::ProductsControllerShowTest < ActionDispatch::IntegrationTest
   test 'should show product with formatted price' do
     get api_v1_product_url(@product.code), as: :json
     body = JSON.parse(response.body)
-    assert_includes(body['price'], '$')
+    assert_includes(body['price'], '€')
   end
 end

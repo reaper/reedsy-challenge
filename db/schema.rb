@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_215533) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price_cents", default: 0, null: false
-    t.string "price_currency", default: "USD", null: false
+    t.string "price_currency", default: "EUR", null: false
     t.json "discount", default: {}, null: false
     t.index ["code"], name: "index_products_on_code", unique: true
   end
