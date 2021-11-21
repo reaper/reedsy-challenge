@@ -72,7 +72,7 @@ rails test
 ### 3. Documentation
 
 The documentation has been generated with apipie-rails (https://github.com/Apipie/apipie-rails).
-It is accessible in the doc folder, just run on osx
+It is accessible at https://reaper.github.io/reedsy-challenge, but also in the doc folder, just run on osx
 ```
 open doc/apidoc.html
 ```
