@@ -2,17 +2,45 @@ class Api::V1::ProductsController < ApplicationController
   before_action :set_product, only: %i[show update]
 
   # GET /api/v1/products
+  #
+  api :GET, '/api/v1/products'
+  description 'Get the products list with attributes'
+  returns code: 200, desc: 'Products as JSON array' do
+    property :array, Array, desc: 'An array of product' do
+      property :product, Product, desc: 'Product JSON'
+    end
+  end
   def index
     @products = Product.all
     render json: @products
   end
 
   # GET /api/v1/products/code
+  #
+  api :GET, '/api/v1/products/:code'
+  description 'Get a product attributes'
+  param :code, String, desc: 'code of the product', required: true
+  returns code: 200, desc: 'Product as JSON' do
+    property :product, Product, desc: 'Product JSON'
+  end
+  returns code: 404, desc: 'No product found' do
+    property :error, String, desc: 'No product found'
+  end
   def show
     render json: @product
   end
 
   # PATCH/PUT /api/v1/products/code
+  #
+  api :PUT, '/api/v1/products'
+  description 'Update a product and return its attributes'
+  param :id, String, desc: 'code of the product', required: true
+  returns code: 200, desc: 'Product as JSON' do
+    property :product, Product, desc: 'Product JSON'
+  end
+  returns code: 422, desc: 'Product errors' do
+    property :errors, Hash, desc: 'Hash of product errors'
+  end
   def update
     if @product.update(product_params)
       render json: @product
@@ -22,6 +50,21 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   # GET /api/v1/products/compute_price
+  #
+  api :GET, '/api/v1/products/compute_price'
+  description 'Compute the price of selected products'
+  param :codes, Array, desc: 'products codes to compute price', required: true
+  returns code: 200, desc: 'Products price as JSON' do
+    property :codes_with_count, Hash, desc: 'Products code with count'
+    property :price_cents, Integer, desc: 'Selected products price in cents'
+    property :price, String, desc: 'Selected products price'
+  end
+  returns code: 400, desc: 'No products code' do
+    property :error, String, desc: 'No products code error'
+  end
+  returns code: 404, desc: 'No product found' do
+    property :error, String, desc: 'No product found'
+  end
   def compute_price
     unless params[:codes].present?
       render json: :no_product_codes, status: :bad_request
@@ -54,6 +97,7 @@ class Api::V1::ProductsController < ApplicationController
       return
     end
 
+    # use products price serializer
     products_price = ProductsPrice.new(
       codes_with_count: codes_with_count,
       price_cents: price_cents
