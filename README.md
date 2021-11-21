@@ -3,6 +3,18 @@
 Welcome to the Reedsy challenge.
 I hope you will enjoy reading it and will be satisfied of what have been done.
 
+## Preface
+
+Hello world, I'm Pierre and I'm a senior software engineer, currently working as a ruby on rails backend software developer at Octoly. I'm 33 years old, married and having 3 children, two girls and one boy. They are currently taking me so much time as they are still young, but if I'm thinking about my hobbies, I would say that I love tinker, going for walk and playing video games. The days before, I spent some time to improve my domotic solution in my house, and added some notifications, for example when the garage door is closed or opening, when a camera detects a person or a car eso. I love automating things.
+
+I'm working as a developer since 12 years now, starting in a web agency during my interships in which I had the chance to learn ruby and rails. I finish my 5 years of studies and have been employed in a computer software company which built management softwares. I had the chance to work, chronologically, with vanilla javascript, C++, java and android. I was the lead developer on the android project during 3 years and was the referer for the QA too. I enforced the development of unit and integration test and the usage of an automated solution to run tests on android emulators with Jenkins, which reduced the QA procedure time for the android client. I used to create manual and automated script with ruby and python.
+
+I always used the ruby on rails framework during my free time to create web applications for me and others, so I started to work as a freelancer at the beginning of 2018. I created two small apps, starcrane.fr and gestlease.com. Both have an administration part using active admin and uses common services as S3, and are hosted by scalingo.com.
+I started to work for Octoly at the beginning of 2020 and had the chance to work with smart and agile developers to evolve their platform and growth their community.
+
+My current interests are docker, domotic solutions, ruby/RoR plugins and tips.
+
+
 ## Dependencies
 
 - active_model_serializers
