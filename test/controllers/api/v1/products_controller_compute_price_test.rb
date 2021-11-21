@@ -7,11 +7,6 @@ class Api::V1::ProductsControllerComputePriceTest < ActionDispatch::IntegrationT
     end
   end
 
-  test 'fails to compute price without product ids' do
-    get compute_price_api_v1_products_url, as: :json
-    assert_response :bad_request
-  end
-
   test 'fails to compute price with bad product id' do
     get compute_price_api_v1_products_url(codes: ['BAAAAAAAD']), as: :json
     assert_response :not_found

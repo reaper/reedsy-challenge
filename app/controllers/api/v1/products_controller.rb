@@ -17,9 +17,9 @@ class Api::V1::ProductsController < ApplicationController
 
   # GET /api/v1/products/code
   #
-  api :GET, '/api/v1/products/:code'
+  api :GET, '/api/v1/products/:id'
   description 'Get a product attributes'
-  param :code, String, desc: 'code of the product', required: true
+  param :id, String, desc: 'code of the product', required: true
   returns code: 200, desc: 'Product as JSON' do
     property :product, Product, desc: 'Product JSON'
   end
@@ -90,7 +90,7 @@ class Api::V1::ProductsController < ApplicationController
           end
         end
 
-        product_price_cents * products_count
+        (product_price_cents * products_count).round
       end
     rescue ActiveRecord::RecordNotFound
       render json: :product_not_found, status: :not_found
